@@ -29,12 +29,12 @@ class twitterbot:
           bot.execute_script('window.scrollTo(0,document.body.scrollHeight)')
           time.sleep(2)
           tweets = bot.find_elements_by_class_name('tweet')
-          links = [elem.get_attribute('data-permalink-path') for elem in tweets]
+          links = [elem.get_attribute('data-permalink-path') for elem in tweets] #get links of individual photos
           for link in links:
               bot.get('https://twitter.com' + link)
               try:
                   bot.find_element_by_class_name('HeartAnimation').click()
-                  time.sleep(10)
+                  time.sleep(10)                  #likes individual photos and sleep for 10s
               except Exception as ex:
                   time.sleep(60)    
 
